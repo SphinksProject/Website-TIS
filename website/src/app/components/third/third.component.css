@@ -1,0 +1,52 @@
+
+.td_1 {
+  width: 700px;
+  height: 50px;
+  background: url("../../../assets/images/line_2.png");
+  background-size: 100% 100%;
+  font-size: 24px;
+  font-weight: normal;
+  color: black;
+}
+
+.td_2 {
+  padding-bottom: 50px;
+  font-size: 14px;
+}
+
+.td_3 {
+  padding-right: 200px;
+}
+
+.img_computer {
+  width: 100px;
+  height: 100px;
+}
+
+.img_phone {
+  width: 60px;
+  height: 60px;
+}
+
+.a_1 {
+  font-size: 14px;
+  color: #FF7700;
+}
+
+.td_4 {
+  font-size: 12px;
+}
+
+.table_0 {
+  text-align: center;
+}
+
+.img_profile {
+  width: 180px;
+  height: 180px;
+}
+
+.td_5 {
+  vertical-align: top;
+  font-size: 14px;
+}

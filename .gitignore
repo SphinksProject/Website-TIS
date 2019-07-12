@@ -1,0 +1,56 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# MongoDB directory
+data
+
+# compiled output
+/spinks-wallet/dist
+/spinks-wallet/dist-server
+/spinks-wallet/tmp
+/spinks-wallet/out-tsc
+/spinks-wallet/sphinks-wallet-win32*
+/spinks-wallet/sphinks-wallet-linux*
+
+# dependencies
+/spinks-wallet/node_modules
+/spinks-wallet/package-lock.json
+#/token_issuance_system/node_modules
+#/token_issuance_system/package-lock.json
+
+# IDEs and editors
+/spinks-wallet/.idea
+/spinks-wallet/.project
+/spinks-wallet/.classpath
+/spinks-wallet/.c9/
+/spinks-wallet/*.launch
+/spinks-wallet/.settings/
+/spinks-wallet/*.sublime-workspace
+/token_issuance_system/.idea
+
+# IDE - VSCode
+/spinks-wallet/.vscode/*
+/spinks-wallet/!.vscode/settings.json
+/spinks-wallet/!.vscode/tasks.json
+/spinks-wallet/!.vscode/launch.json
+/spinks-wallet/!.vscode/extensions.json
+
+# misc
+/spinks-wallet/.sass-cache
+/spinks-wallet/connect.lock
+/spinks-wallet/coverage
+/spinks-wallet/libpeerconnection.log
+/spinks-wallet/npm-debug.log
+/spinks-wallet/yarn-error.log
+/spinks-wallet/testem.log
+/spinks-wallet/typings
+
+# e2e
+/spinks-wallet/e2e/*.js
+/spinks-wallet/e2e/*.map
+
+# System Files
+/spinks-wallet/.DS_Store
+/spinks-wallet/Thumbs.db
+
+# configuration
+#/token_issuance_system/accounts-config.json

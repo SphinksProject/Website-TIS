@@ -1,0 +1,46 @@
+
+.table_1 {
+  width: 100%;
+  height: 100%;
+  border-bottom: 1px solid;
+}
+
+.td_1 {
+  padding-left: 50px;
+}
+
+.img_1 {
+  width: 60px;
+  height: 60px;
+}
+
+.td_2 {
+  vertical-align: bottom;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.td_3 {
+  vertical-align: bottom;
+  padding-right: 50px;
+}
+
+.td_4 {
+  padding-right: 30px;
+}
+
+.table_2 {
+  margin-bottom: 10px;
+}
+
+.table_2 td{
+  padding-left: 15px;
+}
+
+.a_1 {
+  color: #03C52D;
+}
+
+.tr_1 {
+  height: 150px;
+}

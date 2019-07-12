@@ -1,0 +1,62 @@
+{
+    "name": "token_issuance_system",
+    "version": "1.0.0",
+    "author": "***",
+    "description": "***",
+    "private": true,
+    "scripts": {
+        "start": "node --experimental-worker ./bin/www",
+        "test": "node ./test/server.test.js",
+        "generate": "node ./generateData.js",
+        "clear": "node ./cleanTheDatabase.js"
+    },
+    "dependencies": {
+        "bitcore-insight": "^1.0.1",
+        "bitcore-lib": "^8.3.0",
+        "body-parser": "^1.18.x",
+        "cors": "^2.8.5",
+        "express": "^4.16.x",
+        "faker": "^4.1.x",
+        "http": "0.0.0",
+        "https": "^1.0.0",
+        "iplocation": "^6.1.0",
+        "mongoose": "^5.0.x",
+        "nconf": "^0.10.0",
+        "nem-sdk": "^1.6.7",
+        "node-rest-client": "^3.1.0",
+        "oauth2orize": "^1.11.x",
+        "passport": "^0.4.x",
+        "passport-http": "^0.3.x",
+        "passport-http-bearer": "^1.0.x",
+        "passport-local": "^1.0.0",
+        "passport-oauth2-client-password": "^0.1.x",
+        "request": "^2.88.0",
+        "winston": "^2.4.x"
+    },
+    "devDependencies": {
+        "superagent": "^3.8.x",
+        "tape": "^4.9.x"
+    },
+    "jshintConfig": {
+        "curly": true,
+        "eqeqeq": true,
+        "immed": true,
+        "latedef": false,
+        "newcap": false,
+        "noarg": true,
+        "sub": true,
+        "undef": true,
+        "boss": true,
+        "eqnull": true,
+        "strict": false,
+        "scripturl": true,
+        "evil": true,
+        "globals": {
+            "location": true,
+            "printStackTrace": false
+        },
+        "browser": true,
+        "node": true
+    },
+    "license": "MIT"
+}

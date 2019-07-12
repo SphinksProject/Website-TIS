@@ -1,0 +1,23 @@
+
+.table_1 {
+  width: 100%;
+}
+
+.tr_1 {
+  height: 90vh;
+}
+
+.td_1 {
+  background: url("../../../assets/images/background.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  vertical-align: top;
+  padding-top: 15vh;
+}
+
+.td_2 {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}

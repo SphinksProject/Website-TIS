@@ -1,0 +1,37 @@
+{
+  "request": {
+    "acceptance_interval_comment": "Unit: Milliseconds. DOS protection interval. Setting it to 1 will allow up to 1000 requests per second. 2 will allow 500 etc.",
+    "acceptance_interval" : 1,
+    "confirmation_hold_comment" : "Unit: Seconds. The value defines the period needed for the system to initiate a transaction after the funds received. Must be 3600",
+    "confirmation_hold" : 3600,
+    "timeout_comment" : "Unit: Seconds. In case the funds are not received during the period the request will be considered timed out. Set it to 1209600 for 14 days",
+    "timeout" : 1209600,
+    "queue_processing_interval_comment" : "Unit: Seconds. Must be set to 1 second. Other values are for debugging reason only",
+    "queue_processing_interval" : 1,
+    "max_tokens_per_interval_comment" : "Must be 2000. Other values for debugging reason only",
+    "max_tokens_per_interval" : 2000,
+    "rejected_countries_comment": "Rejected countries codes as defined in ISO_3166-2 https://en.wikipedia.org/wiki/ISO_3166-2",
+    "rejected_countries": ["AU","US"]
+  },
+  "network" : {
+    "network_comment": "Acceptable Values: 'mainnet', 'testnet' ",
+    "network": "mainnet",
+    "nem_node_url": "http://oceania.manitpro.be"
+  },
+  "bitcoin": {
+    "fee_comment" : "'fee' defines the amount in satoshis to be paid for a transaction",
+    "fee" : 3000,
+    "shareholder_85" : "127E3y9pGtrufxtaSNTEwYDgktrmrURtC2",
+    "shareholder_15" : "1D3DgiyuT1FgatNBLR2Bt4xGUpnJ5uDQx3"
+  },
+  "ethereum": {
+    "fee_comment" : "'fee' defines the amount in Weis to be paid for a transaction",
+    "fee" : 0,
+    "shareholder_85" : "",
+    "shareholder_15" : ""
+  },
+  "mosaic": {
+    "namespace" : "sphinks",
+    "mosaic_name" : "token"
+  }
+}

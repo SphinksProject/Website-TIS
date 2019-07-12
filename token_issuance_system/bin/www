@@ -1,0 +1,30 @@
+#!/usr/bin/env node
+
+var libs = process.cwd() + '/libs/';
+var config = require(libs + 'config');
+var log = require(libs + 'log')(module);
+var app = require(libs + 'app');
+
+app.set('port', process.env.PORT || config.get('port') || 3000);
+
+var server = app.listen(app.get('port'), function () {
+  log.info('Express server listening on port ' + app.get('port'));
+});
+
+process.on('uncaughtException', function (err) {
+  log.error('uncaughtException', {message: err.message, stack: err.stack}); // logging with MetaData
+
+  setTimeout(() => {
+    log.info('Pre exit delay');
+    process.exit(1); // exit with failure
+  }, 3000);
+});
+
+/*
+var fs = require('fs');
+
+fs.readFile('somefile.txt', function (err, data) {
+  if (err) throw err;
+  //console.log(data);
+});
+*/

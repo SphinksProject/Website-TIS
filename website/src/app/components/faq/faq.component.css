@@ -1,0 +1,35 @@
+
+.table_0 {
+  width: 100%;
+}
+
+.td_0 {
+  vertical-align: top;
+}
+
+.table_1 {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.td_1 {
+  width: 700px;
+  height: 50px;
+  background: url("../../../assets/images/line_2.png");
+  background-size: 100% 100%;
+  font-size: 24px;
+  font-weight: normal;
+  color: black;
+}
+
+.td_2 {
+  width: 650px;
+  padding-bottom: 30px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.td_2 p {
+  padding-left: 30px;
+  font-weight: normal;
+}

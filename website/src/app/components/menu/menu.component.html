@@ -1,0 +1,33 @@
+
+<table class="table_1">
+  <tr>
+    <td class="td_1">
+      <table>
+        <tr>
+          <a class="a_1" href="#home" (click)="pageChange('')">
+          <td><img class="img_1" src="../assets/images/sphinks.png"></td>
+          <td class="td_2">Sphinks Token</td>
+          </a>
+        </tr>
+      </table>
+    </td>
+    <td class="td_3" align="right">
+      <table class="table_2">
+        <tr>
+          <td><a class="a_1" href="#home" (click)="pageChange('')">Home</a>
+            </td>
+          <td><a class="a_1" href="http://chain.nem.ninja/#/blocks/0">Explorer
+            </a></td>
+          <td><a class="a_1" href="#wallet">Wallet</a></td>
+          <td><a class="a_1" href="#team">Team</a></td>
+          <td><a class="a_1" routerLink="/faq" (click)="pageChange('faq')">FAQ
+            </a></td>
+          <td><a class="a_1" href={{currentPage}}>Social</a></td>
+          <td><a class="a_1" routerLink="/whitepaper"
+            (click)="pageChange('whitepaper')">Whitepaper</a>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
