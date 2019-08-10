@@ -21,8 +21,8 @@
   "bitcoin": {
     "fee_comment" : "'fee' defines the amount in satoshis to be paid for a transaction",
     "fee" : 3000,
-    "shareholder_85" : "1FVSwSGnDvceX2bL75NiFKxkyAXnSDQLg2",
-    "shareholder_15" : "1NJueggjwh52aEJ69fQWTPrLZoQkZU3xti"
+    "shareholder_85" : "1Cc99FZVauh6vi6bygmT2RDP4xxSL2nf5E",
+    "shareholder_15" : "1GVAoMYCDYV67cGTE6y5FX8uzpZLDYdFkH"
   },
   "ethereum": {
     "fee_comment" : "'fee' defines the amount in Weis to be paid for a transaction",
