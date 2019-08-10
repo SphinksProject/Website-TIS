@@ -29,7 +29,7 @@ global.bitcoinRecord_NO_UTXO = state.NO_UTXO;
 global.bitcoinRecord_SMALL_AMOUNT = state.SMALL_AMOUNT;
 
 var state_map = [
-    {   id: state.INITIAL,      str: "NOT HANDLED YET",},
+    {   id: state.INITIAL,      str: "INITIAL",},
     {   id: state.ENQUEUED,     str: "ENQUEUED",       },
     {   id: state.TO_RETURN,    str: "TO BE RETURNED", },
     {   id: state.COMPLETED,    str: "COMPLETED",      },
@@ -55,7 +55,7 @@ var bitcoinRecord = new Schema({
     address: { type: String, default: '' },
     confirmations: {type: Number, default: 0 },
     sent_to_shareholders: {type: Number, default: 0},
-    state: {type: Number, default: state.INITIAL},
+    state: {type: Number, default: state.NO_UTXO},
     message: { type: String, default: '' },
 }, {
     toObject: {
@@ -80,14 +80,13 @@ bitcoinRecord.methods.debug_dump = function() {
 
 bitcoinRecord.methods.set_address = function(address) {
     this.address = address;
-
     this.save(function(err) {
         if (err) {
             log.error("Error: " + err.message);
             return;
         }
     });
-
+    log.info("bitcoinRecord.methods.set_address");
     log.info("txid: " + this.txid);
     log.info("value: " + this.value);
     log.info("time: " + this.time);

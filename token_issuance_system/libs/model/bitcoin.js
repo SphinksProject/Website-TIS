@@ -149,6 +149,66 @@ function getLatestTxID() {
         })
 }
 
+function getTxReceivedByURL(txReceivedURL,utxos) {
+    var request = client.get(txReceivedURL, function(data, response){
+
+        try {
+            if (data.data != undefined) {
+
+                var txReceivedData = data.data.txs;
+
+                //log.info("txReceived length: " + txReceivedData.length);
+
+                txReceivedData.forEach(function(tx) {
+                    if (tx.confirmations > 0) {
+                        bitcoinRecord.find({txid: {$eq: tx.txid}})
+                            .exec()
+                            .then(requests => {
+                                if (requests.length == 0) {
+                                    var btcRecord = new bitcoinRecord({
+                                        txid:  tx.txid,
+                                        value: tx.value,
+                                        time:  tx.time,
+                                        confirmations: tx.confirmations,
+                                    });
+                                    try {
+                                        utxos.forEach(function(utxo) {
+                                            if (tx.txid == utxo.txId) {
+                                                btcRecord.state = global.bitcoinRecord_INITIAL;
+                                            }
+                                        });
+                                    } catch (e) {
+                                        //btc_record.set_error("Failed searching utxos array: " + e.message);
+                                    }
+                                    btcRecord.save();
+                                    txid = tx.txid;
+                                }
+                            })
+                            .catch(err => {
+                                log.error('Internal error: %s', err.message);
+                            });
+                    }
+                });
+
+                if (txReceivedData.length < 100) {
+                    current_state = state.GET_LATEST_50;
+                    debugLog("state.GET_LATEST_50");
+                }
+            } else {
+                log.error("txReceived data undefined");
+            }
+        } catch (e) {
+            log.error("txReceived request FAILED: " + e.message);
+        }
+
+    });
+
+    request.on('error', function (err) {
+        log.error('getTxReceived Failed!!', err.request.options);
+    });
+
+}
+
 function getTxReceived() {
 
     if (current_state != state.GET_RECIEVED) {
@@ -169,49 +229,12 @@ function getTxReceived() {
 
     debugLog("Querying: " + txReceivedURL);
 
-    var request = client.get(txReceivedURL, function(data, response){
-
-        try {
-            if (data.data != undefined) {
-
-                var txReceivedData = data.data.txs;
-
-                debugLog("txReceived length: " + txReceivedData.length);
-
-                txReceivedData.forEach(function(tx) {
-                    if (tx.confirmations > 0) {
-
-                        var btcRecord = new bitcoinRecord({
-                            txid:  tx.txid,
-                            value: tx.value,
-                            time:  tx.time,
-                            confirmations: tx.confirmations,
-                        });
-
-                        btcRecord.save();
-
-                        txid = tx.txid;
-                    }
-                });
-
-                debugLog("Latest txid: " + txid);
-
-                if (txReceivedData.length < 100) {
-                    current_state = state.GET_LATEST_50;
-                    debugLog("state.GET_LATEST_50");
-                }
-            } else {
-                log.error("txReceived data undefined");
-            }
-        } catch (e) {
-            log.error("txReceived request FAILED: " + e.message);
+    insight.getUtxos(btc_main_address, (err, utxos) => {
+        if(!err){
+            getTxReceivedByURL(txReceivedURL, utxos);
         }
-
     });
 
-    request.on('error', function (err) {
-        log.error('getTxReceived Failed!!', err.request.options);
-    });
 }
 
 function getAddressLatest50() {
@@ -235,7 +258,7 @@ function getAddressLatest50() {
                 txReceivedData.forEach(function(tx) {
                     //if (tx.confirmations > 0 && tx.incoming.inputs.length > 0) {
                     if (tx.confirmations > 0) {
-                        bitcoinRecord.find({txid: {$eq: tx.txid}, state: {$lt: 100} })
+                        bitcoinRecord.find({txid: {$eq: tx.txid}, state: {$lt: global.bitcoinRecord_COMPLETED} })
                             .exec()
                             .then(requests => {
                                 if (requests.length > 0) {
@@ -370,12 +393,7 @@ function send_utxo(btc_record, percent, to_address, change_address, completion_s
         } else {
 
             try {
-
-                //log.debug("utxos.length: " + utxos.length);
-                //log.debug("btc_record.txid: " + btc_record.txid);
-
                 utxos.forEach(function(utxo) {
-                    //log.debug("utxo.txId: " + utxo.txId);
                     if (btc_record.txid === utxo.txId) {
                         send_tx(btc_record, utxo, percent, to_address, change_address, completion_state);
                         throw BreakException;
@@ -401,7 +419,6 @@ function utxo_reverse(btc_record) {
 }
 
 function enqueue_record(btc_record) {
-
     // try finding the corresponding request
     sphinksRequest.find({$and:[{ btc_address: { $eq: btc_record.address }, state: { $eq: sphinksRequest_AWAITING_FUNDS } }, {btc_address: {"$ne": null}}, {btc_address: {"$ne": ""}}]})
         .exec()
