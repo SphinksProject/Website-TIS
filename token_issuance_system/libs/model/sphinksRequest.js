@@ -16,6 +16,7 @@ const oneXEM = 1000000.0 // 1 xem == 1000000.0 [small xem units]
 const oneSphinksToken = 1000000;
 const mosaic_namespace = config.get('mosaic:namespace');
 const mosaic_name = config.get('mosaic:mosaic_name');
+const mosaic_exchange_rate = config.get('mosaic:exchange_rate');
 
 var endpoint = nem.model.objects.create("endpoint")(nem_node_url, nem.model.nodes.defaultPort);
 var common = nem.model.objects.create("common")('', config.get('nem:key'));
@@ -216,7 +217,7 @@ sphinksRequest.methods.is_queued = function() {
 };
 
 sphinksRequest.methods.set_queued = function(message) {
-    this.rate = global.btc_rate;
+    this.rate = global.btc_rate * mosaic_exchange_rate;
 
     this.save(function(err) {
         if (err) {
@@ -342,22 +343,6 @@ sphinksRequest.methods.set_message = function(message) {
 
     return this.id;
 };
-
-// Set rate
-/*
-sphinksRequest.methods.set_rate = function(rate) {
-    this.rate = rate;
-
-    this.save(function(err) {
-        if (err) {
-            log.error(err.message);
-            return undefined;
-        }
-    });
-
-    return this.id;
-};
-*/
 
 sphinksRequest.methods.set_timestamp = function() {
     this.timestamp = Date.now;

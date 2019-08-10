@@ -32,6 +32,7 @@
   },
   "mosaic": {
     "namespace" : "sphinks",
-    "mosaic_name" : "token"
+    "mosaic_name" : "token",
+    "exchange_rate" : 1
   }
 }
