@@ -16,15 +16,16 @@
         <tr>
           <td><a class="a_1" href="#home" (click)="pageChange('')">Home</a>
             </td>
-          <td><a class="a_1" href="http://chain.nem.ninja/#/blocks/0">Explorer
-            </a></td>
           <td><a class="a_1" href="#wallet">Wallet</a></td>
           <td><a class="a_1" href="#team">Team</a></td>
+          <td><a class="a_1" href="#roadmap">Roadmap</a></td>
+          <td><a class="a_1" href={{currentPage}}>Social</a></td>
           <td><a class="a_1" routerLink="/faq" (click)="pageChange('faq')">FAQ
             </a></td>
-          <td><a class="a_1" href={{currentPage}}>Social</a></td>
           <td><a class="a_1" routerLink="/whitepaper"
-            (click)="pageChange('whitepaper')">Whitepaper</a>
+            (click)="pageChange('whitepaper')">Whitepaper</a></td>
+          <td><a class="a_1" href="http://chain.nem.ninja/#/blocks/0">Explorer
+            </a>
           </td>
         </tr>
       </table>

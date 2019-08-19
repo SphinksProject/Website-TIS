@@ -46,6 +46,11 @@
   height: 180px;
 }
 
+.img_roadmap {
+  width: 700px;
+  height: 600px;
+}
+
 .td_5 {
   vertical-align: top;
   font-size: 14px;
