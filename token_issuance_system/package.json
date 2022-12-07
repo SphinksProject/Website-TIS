@@ -15,7 +15,7 @@
         "bitcore-lib": "^8.3.0",
         "body-parser": "^1.18.x",
         "cors": "^2.8.5",
-        "express": "^4.16.x",
+        "express": "^4.17.x",
         "faker": "^4.1.x",
         "http": "0.0.0",
         "https": "^1.0.0",
